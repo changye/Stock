@@ -1,5 +1,6 @@
 create database FundDB;
 grant all privileges on FundDB.* to 'changye'@'%' identified by '19820928';
+use FundDB;
 CREATE TABLE FundHistory (
 	ID INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
        FUND_CODE  CHAR(10)  NOT NULL,
