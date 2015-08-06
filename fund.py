@@ -52,10 +52,6 @@ class Fund(object):
 
         return success
 
-
-
-
-
 if __name__ == '__main__':
     f = Fund()
     f.getLastBusinessDayFundInfomation()
