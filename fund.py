@@ -48,9 +48,7 @@ class Fund(object):
         finally:
             conn.close()
 
-
-
-    def saveToDb(self):
+    def save_to_db(self):
         success = False
 
         if self._sh:
@@ -67,4 +65,4 @@ class Fund(object):
 if __name__ == '__main__':
     f = Fund()
     f.getLastBusinessDayFundInfomation()
-    f.saveToDb()
+    f.save_to_db()
