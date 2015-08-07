@@ -3,7 +3,6 @@ __author__ = 'changye'
 import shFund
 import szFund
 import mysql.connector
-
 import logging
 logging.basicConfig(level=logging.WARNING)
 
@@ -17,8 +16,19 @@ class Fund(object):
         self.__password = password
 
     def getLastBusinessDayFundInfomation(self):
-        self._sh= shFund.getFund()
+        logging.warning('Start connecting to sse.....')
+        self._sh = shFund.getFund()
+        if self._sh:
+            logging.warning('Ok!')
+        else:
+            logging.warning('Failed!')
+
+        logging.warning('Start connect to szse.....')
         self._sz = szFund.getFund()
+        if self._sz:
+            logging.warning('Ok!')
+        else:
+            logging.warning('Failed!')
 
     def __save(self, funds):
         conn = mysql.connector.connect(host=self.__dbhost, db=self.__dbname, user=self.__user, passwd=self.__password)
@@ -46,9 +56,11 @@ class Fund(object):
         if self._sh:
             self.__save(self._sh)
             success = True
+            logging.warning('sh funds is saved into database.')
         if self._sz:
             self.__save(self._sz)
             success = True
+            logging.warning('sz funds is saved into database.')
 
         return success
 
