@@ -4,7 +4,7 @@ import re
 import logging
 import requests
 import tools
-logging.basicConfig(level=logging.INFO)
+logging.basicConfig(level=logging.WARNING)
 
 def table2List(text):
     text = text.replace('\n', '')
@@ -48,7 +48,7 @@ def getFundValue(*date):
     funds = dict()
     for v in values:
         fund = formatvalue(v)
-        if fund['FUND_CODE'].startswith("1"):
+        if 'FUND_CODE' in fund and fund['FUND_CODE'].startswith("1"):
             funds[fund['FUND_CODE']] = fund
     # logging.info(funds)
     return funds
@@ -77,7 +77,7 @@ def getFundInfo():
     funds = dict()
     for v in values:
         fund = formatInfo(v)
-        if fund['FUND_CODE'].startswith("1"):
+        if 'FUND_CODE' in fund and fund['FUND_CODE'].startswith("1"):
             funds[fund['FUND_CODE']] = fund
     # logging.info(funds)
     return funds

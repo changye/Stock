@@ -5,7 +5,7 @@ import szFund
 import mysql.connector
 
 import logging
-logging.basicConfig(level=logging.INFO)
+logging.basicConfig(level=logging.WARNING)
 
 class Fund(object):
     def __init__(self, dbhost='localhost', dbname='FundDB', user='changye', password='19820928'):
