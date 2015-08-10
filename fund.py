@@ -4,7 +4,7 @@ import shFund
 import szFund
 import mysql.connector
 import logging
-# logging.basicConfig(level=logging.WARNING)
+# logging.basicConfig(level=logging.INFO)
 
 class Fund(object):
     def __init__(self, dbhost='localhost', dbname='FundDB', user='changye', password='19820928'):
@@ -55,8 +55,8 @@ class Fund(object):
                         update_value.append(value['FUND_VOL'])
 
                     if len(update_key) > 0:
-                        # logging.info('update FundHistory set ' + ','.join(update_key) +
-                        #                ' where FUND_CODE=%s and FUND_DATE=%s')
+                        logging.info('update FundHistory set ' + ','.join(update_key) +
+                                        ' where FUND_CODE=%s and FUND_DATE=%s')
                         cursor.execute('update FundHistory set ' + ','.join(update_key) +
                                        ' where FUND_CODE=%s and FUND_DATE=%s',
                                         update_value + [fundcode, value['FUND_DATE']])
