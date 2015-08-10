@@ -3,7 +3,7 @@ __author__ = 'changye'
 from urllib import request
 import re
 import logging
-logging.basicConfig(level=logging.WARNING)
+# logging.basicConfig(level=logging.WARNING)
 
 def formatQuote(str):
     string = str.strip()

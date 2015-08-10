@@ -5,7 +5,7 @@ import logging
 import json
 from datetime import datetime, timedelta
 
-logging.basicConfig(level=logging.WARNING)
+# logging.basicConfig(level=logging.WARNING)
 
 def isValidMarketDay(date):
 

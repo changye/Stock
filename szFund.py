@@ -4,7 +4,7 @@ import re
 import logging
 import requests
 import tools
-logging.basicConfig(level=logging.WARNING)
+# logging.basicConfig(level=logging.INFO)
 
 def table2List(text):
     text = text.replace('\n', '')
@@ -28,11 +28,11 @@ def getFundValue(*date):
     url = 'http://www.szse.cn/szseWeb/FrontController.szse?ACTIONID=8&CATALOGID=1833&txtKsrq=START_DATE&txtZzrq=END_DATE&ENCODE=1&TABKEY=tab1'
 
     excelUrl = url.replace('START_DATE', startDate).replace('END_DATE', endDate)
-
+    logging.info(excelUrl);
     r = requests.get(excelUrl)
     text = bytes.decode(r.content, 'GBK')
     values = table2List(text)
-    # [logging.info(v) for v in values]
+    [logging.info(v) for v in values]
     def formatvalue(v):
         keys = ['DATE', 'FUND_CODE', 'FUND_ABBR', 'FUND_NAV']
         fund = dict()

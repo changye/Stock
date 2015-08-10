@@ -4,7 +4,7 @@ import shFund
 import szFund
 import mysql.connector
 import logging
-logging.basicConfig(level=logging.WARNING)
+# logging.basicConfig(level=logging.WARNING)
 
 class Fund(object):
     def __init__(self, dbhost='localhost', dbname='FundDB', user='changye', password='19820928'):
@@ -44,6 +44,23 @@ class Fund(object):
                     cursor.execute('insert into FundHistory (FUND_CODE,FUND_DATE,FUND_NAV,FUND_VOL) '
                                    'values (%s, %s, %s, %s)',
                                    [fundcode, value['FUND_DATE'], value['FUND_NAV'], value['FUND_VOL']])
+                else:
+                    update_key = list()
+                    update_value = list()
+                    if value['FUND_NAV'] != 0:
+                        update_key.append('FUND_NAV=%s')
+                        update_value.append(value['FUND_NAV'])
+                    if value['FUND_VOL'] != 0:
+                        update_key.append('FUND_VOL=%s')
+                        update_value.append(value['FUND_VOL'])
+
+                    if len(update_key) > 0:
+                        # logging.info('update FundHistory set ' + ','.join(update_key) +
+                        #                ' where FUND_CODE=%s and FUND_DATE=%s')
+                        cursor.execute('update FundHistory set ' + ','.join(update_key) +
+                                       ' where FUND_CODE=%s and FUND_DATE=%s',
+                                        update_value + [fundcode, value['FUND_DATE']])
+
             conn.commit()
         finally:
             conn.close()

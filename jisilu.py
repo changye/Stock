@@ -4,7 +4,7 @@ import requests
 import json
 import mysql.connector
 import logging
-logging.basicConfig(level=logging.WARNING)
+# logging.basicConfig(level=logging.WARNING)
 
 
 def get_fund_detail():

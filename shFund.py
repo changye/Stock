@@ -6,7 +6,7 @@ import requests
 from datetime import datetime, timedelta
 import tools
 import logging
-logging.basicConfig(level=logging.WARNING)
+# logging.basicConfig(level=logging.WARNING)
 
 def getFromUrl(url):
     header = {
