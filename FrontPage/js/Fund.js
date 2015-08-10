@@ -54,5 +54,4 @@ function refresh(ids) {
     document.head.appendChild(script);
 }
 
-
 refresh(['sh600036','sh600037']);
