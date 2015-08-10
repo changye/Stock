@@ -3,6 +3,13 @@
  */
 var fundQuote = undefined;
 
+
+function getAllFund() {
+    $.getJSON("/Server/fund.php", {'fund': 'a'}, function (data) {
+        document.allFunds = data;
+    });
+}
+
 function formatQuote(queryInArray) {
     var keys = ['name', 'open_today', 'close_yesterday', 'quote',
         'highest', 'lowest', 'buy', 'sell', 'deal', 'amount',
@@ -20,12 +27,11 @@ function formatQuote(queryInArray) {
     return result;
 }
 
-function refresh(ids) {
-    var fundIds;
-    if(Array.isArray(ids)) {
-        fundIds = ids;
-    }else {
-        fundIds = [ids];
+function refresh() {
+    var fundIds = Array();
+    if(!document.focusFunds) return ;
+    for(var i in document.focusFunds) {
+        fundIds.push(document.focusFunds[i].FUND_MARKET + document.focusFunds[i].FUND_CODE);
     }
     var queryid = fundIds.join(',');
     var url = 'http://hq.sinajs.cn/list=' + queryid;
@@ -44,14 +50,48 @@ function refresh(ids) {
     script.setAttribute('async','false');
     script.onload = function () {
         fundQuote = Object();
-        console.log(fundIds);
         for (var i in fundIds) {
             //console.log('hq_str_' + fundIds[i]);
             fundQuote[fundIds[i]] = formatQuote(eval('hq_str_' + fundIds[i]).split(','));
         }
-        console.log(fundQuote);
+
+        recalc();
+
+        remap();
+        //console.log(fundQuote);
     }
     document.head.appendChild(script);
 }
 
-refresh(['sh600036','sh600037']);
+function recalc() {
+    document.fundHeader = ['代码','名称','现价','涨幅','成交额','净值'];
+    document.fundValues = Array();
+    for(var i in document.focusFunds) {
+        var fund = Array();
+        var id = document.focusFunds[i].FUND_MARKET + document.focusFunds[i].FUND_CODE;
+        fund.push(document.allFunds[i].FUND_CODE);
+        fund.push(document.allFunds[i].FUND_ABBR);
+        fund.push(fundQuote[id].quote);
+        fund.push(Math.round(((fundQuote[id].quote / fundQuote[id].close_yesterday) - 1) * 10000)/100 + "%");
+        fund.push(fundQuote[id].amount);
+        fund.push(document.allFunds[i].FUND_NAV);
+        document.fundValues.push(fund);
+    }
+
+}
+
+function remap() {
+    document.fundValues = reIndexBy(document.fundValues,5,false);
+    createTable(document.fundHeader,document.fundValues);
+}
+
+function filterOut(funds, key, value) {
+    var result = Array();
+    var pattern = new RegExp(value);
+    for(var i in funds) {
+        if(pattern.test(funds[i][key]) ) {
+            result.push({'FUND_CODE': funds[i]['FUND_CODE'], 'FUND_MARKET': funds[i]['FUND_MARKET']});
+        }
+    }
+    return result;
+}

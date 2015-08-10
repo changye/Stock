@@ -23,7 +23,8 @@ if (!$db) {
 }
 $db->query("SET NAMES utf8");
 
-$queryCmd = "select * from FundDetail where FUND_TYPE='$fundType'";
+$queryCmd = "select FundDetail.*,FundHistory.* from FundDetail,FundHistory where FundHistory.FUND_CODE=FundDetail.FUND_CODE and FundHistory.FUND_DATE=(select max(FUND_DATE) from FundHistory) and  FundDetail.FUND_TYPE='$fundType'";
+//echo $queryCmd;
 $result = $db->query($queryCmd);
 if($result) {
     $items = array();
@@ -31,6 +32,8 @@ if($result) {
     while($item = $result->fetch_assoc())
     {
         foreach($item as $key=>$value){
+            $value = str_replace("\r", "\\r", $value);
+            $value = str_replace("\n", "\\n", $value);
             $item[$key] = urlencode($value);
         }
         $items[] = $item;

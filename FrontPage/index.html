@@ -3,29 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <title></title>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="js/Fund.js"></script>
     <script src="js/View.js"></script>
+    <script>
+        $(document).ready(function() {
+            $.getJSON("/Server/fund.php", {'fund': 'a'}, function (data) {
+                document.allFunds = data;
+                document.focusFunds = filterOut(document.allFunds,'FUND_CODE',"\d*");
+                refresh();
+            });
+        })
+    </script>
 </head>
 <body>
-<table border="1">
-    <thead>
-    <tr>
-        <th>A</th>
-        <th>B</th>
-    </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>a</td>
-            <td>b</td>
-        </tr>
-    </tbody>
-    <tfoot>
-    <tr>
-        <td>C</td>
-        <td>D</td>
-    </tr>
-    </tfoot>
-</table>
+
 </body>
 </html>
