@@ -3,7 +3,12 @@
  */
 
 function createTable(tkeys,values) {
+
+    var tableOld = document.getElementById('fund_table');
+    if(tableOld) document.body.removeChild(tableOld);
+
     var table = document.createElement('table');
+    table.setAttribute('id', 'fund_table');
     table.appendChild(createHeader(tkeys));
     table.appendChild(createBody(values));
     document.body.appendChild(table);

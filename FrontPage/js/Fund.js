@@ -5,9 +5,20 @@ var fundQuote = undefined;
 
 
 function getAllFund() {
-    $.getJSON("/Server/fund.php", {'fund': 'a'}, function (data) {
+    $.getJSON("/Server/fund.php", function (data) {
         document.allFunds = data;
     });
+}
+
+function map() {
+    document.fundMap = Object();
+    for(var i in document.allFunds) {
+        document.fundMap[document.allFunds[i].FUND_CODE] = i;
+    }
+}
+
+function getFundDetail(fundCode) {
+    return document.allFunds[document.fundMap[fundCode]];
 }
 
 function formatQuote(queryInArray) {
@@ -69,12 +80,13 @@ function recalc() {
     for(var i in document.focusFunds) {
         var fund = Array();
         var id = document.focusFunds[i].FUND_MARKET + document.focusFunds[i].FUND_CODE;
-        fund.push(document.allFunds[i].FUND_CODE);
-        fund.push(document.allFunds[i].FUND_ABBR);
+        fund.push(document.focusFunds[i].FUND_CODE);
+        var detail = getFundDetail(document.focusFunds[i].FUND_CODE);
+        fund.push(detail.FUND_ABBR);
         fund.push(fundQuote[id].quote);
-        fund.push(Math.round(((fundQuote[id].quote / fundQuote[id].close_yesterday) - 1) * 10000)/100 + "%");
+        fund.push(Math.round(((fundQuote[id].quote / fundQuote[id].close_yesterday) - 1) * 100).toFixed(2) + "%");
         fund.push(fundQuote[id].amount);
-        fund.push(document.allFunds[i].FUND_NAV);
+        fund.push(detail.FUND_NAV);
         document.fundValues.push(fund);
     }
 

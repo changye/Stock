@@ -12,9 +12,9 @@ define('DBNAME', 'FundDB');
 define('DBUSER', 'changye');
 define('DBPASSWD', '19820928');
 
-$fundType = 'a';
+$fundType = '';
 
-if ($_GET['fund'] == 'm' || $_GET['fund'] == 'b' || $_GET['fund'] == 'a') {
+if (isset($_GET['fund']) &&($_GET['fund'] == 'm' || $_GET['fund'] == 'b' || $_GET['fund'] == 'a')) {
     $fundType = $_GET['fund'];
 }
 $db = new mysqli(DBHOST, DBUSER, DBPASSWD, DBNAME);
@@ -23,7 +23,11 @@ if (!$db) {
 }
 $db->query("SET NAMES utf8");
 
-$queryCmd = "select FundDetail.*,FundHistory.* from FundDetail,FundHistory where FundHistory.FUND_CODE=FundDetail.FUND_CODE and FundHistory.FUND_DATE=(select max(FUND_DATE) from FundHistory) and  FundDetail.FUND_TYPE='$fundType'";
+if($fundType != ''){
+    $queryCmd = "select FundDetail.*,FundHistory.* from FundDetail,FundHistory where FundHistory.FUND_CODE=FundDetail.FUND_CODE and FundHistory.FUND_DATE=(select max(FUND_DATE) from FundHistory) and  FundDetail.FUND_TYPE='$fundType'";
+}else{
+    $queryCmd = "select FundDetail.*,FundHistory.* from FundDetail,FundHistory where FundHistory.FUND_CODE=FundDetail.FUND_CODE and FundHistory.FUND_DATE=(select max(FUND_DATE) from FundHistory)";
+}
 //echo $queryCmd;
 $result = $db->query($queryCmd);
 if($result) {
