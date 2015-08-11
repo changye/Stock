@@ -45,7 +45,7 @@ def format_fund(fund_json):
         'FUND_LOWER_RECALC' : 'lower_recalc_price',
         'FUND_UPPER_RECALC' : 'upper_recalc_price',
         'FUND_NEXT_RECALC_DATE' : 'next_recalc_dt',
-        'FUND_INT_MODE' : 'coupon_descr',
+        'FUND_INT_MODE' : 'coupon_descr_s',
         'FUND_INT' : 'coupon',
         'FUND_INT_NEXT' : 'coupon_next',
         'FUND_INDEX_CODE' : 'index_id',

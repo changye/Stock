@@ -2,12 +2,30 @@
  * Created by changye on 15-8-10.
  */
 var fundQuote = undefined;
+var indexQuote = undefined;
 
 
 function getAllFund() {
     $.getJSON("/Server/fund.php", function (data) {
         document.allFunds = data;
     });
+}
+
+function getAllIndex() {
+    document.indexes = Object();
+    for(var i in document.allFunds) {
+        document.indexes[document.allFunds[i].FUND_INDEX_CODE] = 1;
+    }
+}
+
+function completeIndexId(code) {
+    if(code.match('^0')) {
+        return 'sh' + code;
+    }
+    if(code.match('^3')) {
+        return 'sz' + code;
+    }
+    return code;
 }
 
 function map() {
@@ -40,11 +58,16 @@ function formatQuote(queryInArray) {
 
 function refresh() {
     var fundIds = Array();
-    if(!document.focusFunds) return ;
-    for(var i in document.focusFunds) {
-        fundIds.push(document.focusFunds[i].FUND_MARKET + document.focusFunds[i].FUND_CODE);
+    if(!document.allFunds) return ;
+    for(var i in document.allFunds) {
+        fundIds.push(document.allFunds[i].FUND_MARKET + document.allFunds[i].FUND_CODE);
     }
-    var queryid = fundIds.join(',');
+
+    var indexId = Array();
+    for(var i in document.indexes) {
+        indexId.push(completeIndexId(i));
+    }
+    var queryid = fundIds.join(',') + ',' + indexId.join(',');
     var url = 'http://hq.sinajs.cn/list=' + queryid;
     //console.log('url is: ' + url );
 
@@ -65,6 +88,10 @@ function refresh() {
             //console.log('hq_str_' + fundIds[i]);
             fundQuote[fundIds[i]] = formatQuote(eval('hq_str_' + fundIds[i]).split(','));
         }
+        indexQuote = Object();
+        for (var i in indexId) {
+            indexQuote[indexId[i]] = formatQuote(eval('hq_str_' + indexId[i]).split(','));
+        }
 
         recalc();
 
@@ -75,25 +102,93 @@ function refresh() {
 }
 
 function recalc() {
-    document.fundHeader = ['代码','名称','现价','涨幅','成交额','净值'];
+    document.fundHeader = ['代码','名称','现价','涨幅','成交额','净值','折价率','利率规则',
+                            '本期利率','下期利率','剩余年限','修正收益率','参考指数','指数涨幅',
+                            '下折母鸡需跌'];
     document.fundValues = Array();
     for(var i in document.focusFunds) {
         var fund = Array();
         var id = document.focusFunds[i].FUND_MARKET + document.focusFunds[i].FUND_CODE;
-        fund.push(document.focusFunds[i].FUND_CODE);
         var detail = getFundDetail(document.focusFunds[i].FUND_CODE);
+        //代码
+        fund.push(document.focusFunds[i].FUND_CODE);
+        //名称
         fund.push(detail.FUND_ABBR);
-        fund.push(fundQuote[id].quote);
-        fund.push(Math.round(((fundQuote[id].quote / fundQuote[id].close_yesterday) - 1) * 100).toFixed(2) + "%");
-        fund.push(fundQuote[id].amount);
-        fund.push(detail.FUND_NAV);
+        //现价
+        var price = fundQuote[id].quote * 1.0;
+        fund.push(price.toFixed(3));
+        //涨幅
+        var volatility = (((fundQuote[id].quote / fundQuote[id].close_yesterday) - 1) * 100).toFixed(2);
+        fund.push(volatility + "%");
+        //成交量
+        var amount = (fundQuote[id].amount /10000);
+        fund.push(amount.toFixed(2));
+        //净值
+        var netValue = null;
+        if(detail.FUND_NAV > 0){
+            netValue = detail.FUND_NAV * 1.0;
+        }
+        fund.push(netValue?netValue.toFixed(3):netValue);
+        //折价率
+        var discount = '-';
+        if(detail.FUND_NAV > 0){
+            discount = ((1 - (fundQuote[id].quote / detail.FUND_NAV)) * 100).toFixed(2) + '%'
+        }
+        fund.push(discount);
+        //利率规则
+        fund.push(detail.FUND_INT_MODE);
+        //本期利率
+        fund.push(detail.FUND_INT);
+        //下期利率
+        fund.push(detail.FUND_INT_NEXT);
+        //剩余年限
+        var leftYear = '永续';
+        if(detail.FUND_MATURITY_DATE){
+            var maturity = detail.FUND_MATURITY_DATE.split('-');
+            leftYear = (((new Date(maturity[0],maturity[1]-1,maturity[2])) - (new Date())) / 31536000000).toFixed(2);
+            //leftYear = detail.FUND_MATURITY_DATE;
+        }
+        fund.push(leftYear);
+        //修正收益率
+        var fundReturn = '-';
+        if(leftYear == '永续' && netValue) {
+            var nextRecalcDate = detail.FUND_NEXT_RECALC_DATE.split('-');
+            var yearToRecalc = (((new Date(nextRecalcDate[0],nextRecalcDate[1]-1,nextRecalcDate[2])) - (new Date())) / 31536000000).toFixed(2);
+            fundReturn = detail.FUND_INT_NEXT / (100 * (price - netValue + 1) + yearToRecalc * (detail.FUND_INT_NEXT - detail.FUND_INT));
+            fundReturn = (100 * fundReturn).toFixed(3) + '%';
+        }
+        fund.push(fundReturn);
+        //参考指数
+        var indexName = detail.FUND_INDEX_ABBR;
+        fund.push(indexName);
+        //指数涨幅
+        var indexVolatility = null;
+        var indexId = completeIndexId(detail.FUND_INDEX_CODE);
+        if(indexQuote[indexId]) {
+            indexVolatility = (((indexQuote[indexId].quote / indexQuote[indexId].close_yesterday) - 1) * 100).toFixed(2);
+            indexVolatility = indexVolatility + '%';
+        }
+        fund.push(indexVolatility);
+        //下折母鸡需跌
+        var fundBLowerCalcValue = detail.FUND_LOWER_RECALC * 1.0;
+        var fundBId = detail.FUND_B_CODE;
+        var netValueA = netValue;
+        console.log(fundBId);
+        var netValueB = getFundDetail(fundBId).FUND_NAV * 1.0;
+        var mDec = null;
+        if(netValue){
+            mDec = ((1 - (fundBLowerCalcValue + netValue) / (netValueA + netValueB)) * 100).toFixed(2) ;
+        }
+        mDec = mDec?mDec + '%' : mDec;
+        fund.push(mDec);
+
         document.fundValues.push(fund);
     }
 
 }
 
 function remap() {
-    document.fundValues = reIndexBy(document.fundValues,5,false);
+    document.fundValues = reIndexBy(document.fundValues,11,false);
     createTable(document.fundHeader,document.fundValues);
 }
 

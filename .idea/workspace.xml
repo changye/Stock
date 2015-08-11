@@ -3,12 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="e11737e1-bd3e-43dd-be30-8ab01cefee48" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FrontPage/js/Fund.js" afterPath="$PROJECT_DIR$/FrontPage/js/Fund.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FrontPage/js/View.js" afterPath="$PROJECT_DIR$/FrontPage/js/View.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server/fund.php" afterPath="$PROJECT_DIR$/Server/fund.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FrontPage/index.html" afterPath="$PROJECT_DIR$/FrontPage/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jisilu.py" afterPath="$PROJECT_DIR$/jisilu.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FrontPage/.idea/workspace.xml" afterPath="$PROJECT_DIR$/FrontPage/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server/.idea/workspace.xml" afterPath="$PROJECT_DIR$/Server/.idea/workspace.xml" />
     </list>
     <ignored path="Stock.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -23,11 +21,11 @@
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/Stock$tools.coverage" NAME="tools Coverage Results" MODIFIED="1438830157523" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Stock$jisilu.coverage" NAME="jisilu Coverage Results" MODIFIED="1439169941709" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Stock$excel.coverage" NAME="excel Coverage Results" MODIFIED="1438670850988" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Stock$jisilu.coverage" NAME="jisilu Coverage Results" MODIFIED="1439270663422" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Stock$shFund.coverage" NAME="shFund Coverage Results" MODIFIED="1438837969353" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Stock$test.coverage" NAME="test Coverage Results" MODIFIED="1438665585351" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Stock$fund.coverage" NAME="fund Coverage Results" MODIFIED="1439172224453" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Stock$fund.coverage" NAME="fund Coverage Results" MODIFIED="1439270652503" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Stock$szFund.coverage" NAME="szFund Coverage Results" MODIFIED="1439170153967" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Stock$SinaApi.coverage" NAME="SinaApi Coverage Results" MODIFIED="1438659061021" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
@@ -52,27 +50,37 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="fund.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="fund.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/fund.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="42" column="49" selection-start-line="42" selection-start-column="49" selection-end-line="42" selection-end-column="49" />
+              <caret line="48" column="41" selection-start-line="48" selection-start-column="41" selection-end-line="48" selection-end-column="41" />
               <folding>
                 <element signature="e#24#37#0" expanded="true" />
-                <marker date="1439208702960" expanded="true" signature="1153:1216" placeholder="select * fro..FundHistory..." />
-                <marker date="1439208702960" expanded="true" signature="1434:1559" placeholder="insert into ..." />
-                <marker date="1439208702960" expanded="true" signature="2188:2313" placeholder="update FundH..." />
-                <marker date="1439208702960" expanded="true" signature="2358:2482" placeholder="update FundH..." />
+                <marker date="1439172260061" expanded="true" signature="1153:1216" placeholder="select * fro..FundHistory..." />
+                <marker date="1439172260061" expanded="true" signature="1434:1559" placeholder="insert into ..." />
+                <marker date="1439172260061" expanded="true" signature="2188:2313" placeholder="update FundH..." />
+                <marker date="1439172260061" expanded="true" signature="2358:2482" placeholder="update FundH..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="jisilu.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Fund.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/FrontPage/js/Fund.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="116" column="0" selection-start-line="116" selection-start-column="0" selection-end-line="116" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="jisilu.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/jisilu.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+              <caret line="43" column="39" selection-start-line="43" selection-start-column="39" selection-end-line="43" selection-end-column="39" />
               <folding>
                 <element signature="e#24#39#0" expanded="true" />
               </folding>
@@ -146,12 +154,13 @@
         <option value="$PROJECT_DIR$/test.py" />
         <option value="$PROJECT_DIR$/excel.py" />
         <option value="$PROJECT_DIR$/FundDB.sql" />
-        <option value="$PROJECT_DIR$/jisilu.py" />
         <option value="$PROJECT_DIR$/SinaApi.py" />
         <option value="$PROJECT_DIR$/shFund.py" />
         <option value="$PROJECT_DIR$/tools.py" />
         <option value="$PROJECT_DIR$/szFund.py" />
         <option value="$PROJECT_DIR$/fund.py" />
+        <option value="$PROJECT_DIR$/FrontPage/js/Fund.js" />
+        <option value="$PROJECT_DIR$/jisilu.py" />
       </list>
     </option>
   </component>
@@ -191,6 +200,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
@@ -238,9 +248,26 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Stock" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Stock" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FrontPage" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -251,7 +278,7 @@
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
-  <component name="RunManager" selected="Python.fund">
+  <component name="RunManager" selected="Python.jisilu">
     <configuration default="false" name="szFund" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -539,9 +566,9 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.fund" />
-        <item index="1" class="java.lang.String" itemvalue="Python.szFund" />
-        <item index="2" class="java.lang.String" itemvalue="Python.jisilu" />
+        <item index="0" class="java.lang.String" itemvalue="Python.jisilu" />
+        <item index="1" class="java.lang.String" itemvalue="Python.fund" />
+        <item index="2" class="java.lang.String" itemvalue="Python.szFund" />
         <item index="3" class="java.lang.String" itemvalue="Python.shFund" />
         <item index="4" class="java.lang.String" itemvalue="Python.tools" />
       </list>
@@ -618,11 +645,11 @@
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14501348" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15180056" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32901832" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3407935" sideWeight="0.5040431" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3407935" sideWeight="0.49595687" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.34519956" sideWeight="0.50193906" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3398058" sideWeight="0.4891967" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -630,7 +657,7 @@
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.399137" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34519956" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34519956" sideWeight="0.49806094" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
     </layout>
@@ -666,16 +693,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/szFund.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="6" column="32" selection-start-line="6" selection-start-column="32" selection-end-line="6" selection-end-column="32" />
-          <folding>
-            <element signature="e#24#33#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/jisilu.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -732,10 +749,10 @@
           <caret line="53" column="0" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
           <folding>
             <element signature="e#24#37#0" expanded="true" />
-            <marker date="1439208702960" expanded="true" signature="1153:1216" placeholder="select * fro..FundHistory..." />
-            <marker date="1439208702960" expanded="true" signature="1434:1559" placeholder="insert into ..." />
-            <marker date="1439208702960" expanded="true" signature="2188:2313" placeholder="update FundH..." />
-            <marker date="1439208702960" expanded="true" signature="2358:2482" placeholder="update FundH..." />
+            <marker date="1439172260061" expanded="true" signature="1153:1216" placeholder="select * fro..FundHistory..." />
+            <marker date="1439172260061" expanded="true" signature="1434:1559" placeholder="insert into ..." />
+            <marker date="1439172260061" expanded="true" signature="2188:2313" placeholder="update FundH..." />
+            <marker date="1439172260061" expanded="true" signature="2358:2482" placeholder="update FundH..." />
           </folding>
         </state>
       </provider>
@@ -803,10 +820,10 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#24#37#0" expanded="true" />
-            <marker date="1439208702960" expanded="true" signature="1153:1216" placeholder="select * fro..FundHistory..." />
-            <marker date="1439208702960" expanded="true" signature="1434:1559" placeholder="insert into ..." />
-            <marker date="1439208702960" expanded="true" signature="2188:2313" placeholder="update FundH..." />
-            <marker date="1439208702960" expanded="true" signature="2358:2482" placeholder="update FundH..." />
+            <marker date="1439172260061" expanded="true" signature="1153:1216" placeholder="select * fro..FundHistory..." />
+            <marker date="1439172260061" expanded="true" signature="1434:1559" placeholder="insert into ..." />
+            <marker date="1439172260061" expanded="true" signature="2188:2313" placeholder="update FundH..." />
+            <marker date="1439172260061" expanded="true" signature="2358:2482" placeholder="update FundH..." />
           </folding>
         </state>
       </provider>
@@ -867,10 +884,10 @@
           <caret line="3" column="18" selection-start-line="3" selection-start-column="18" selection-end-line="3" selection-end-column="18" />
           <folding>
             <element signature="e#24#37#0" expanded="true" />
-            <marker date="1439208702960" expanded="true" signature="1153:1216" placeholder="select * fro..FundHistory..." />
-            <marker date="1439208702960" expanded="true" signature="1434:1559" placeholder="insert into ..." />
-            <marker date="1439208702960" expanded="true" signature="2188:2313" placeholder="update FundH..." />
-            <marker date="1439208702960" expanded="true" signature="2358:2482" placeholder="update FundH..." />
+            <marker date="1439172260061" expanded="true" signature="1153:1216" placeholder="select * fro..FundHistory..." />
+            <marker date="1439172260061" expanded="true" signature="1434:1559" placeholder="insert into ..." />
+            <marker date="1439172260061" expanded="true" signature="2188:2313" placeholder="update FundH..." />
+            <marker date="1439172260061" expanded="true" signature="2358:2482" placeholder="update FundH..." />
           </folding>
         </state>
       </provider>
@@ -928,10 +945,10 @@
           <caret line="3" column="18" selection-start-line="3" selection-start-column="18" selection-end-line="3" selection-end-column="18" />
           <folding>
             <element signature="e#24#37#0" expanded="true" />
-            <marker date="1439208702960" expanded="true" signature="1153:1216" placeholder="select * fro..FundHistory..." />
-            <marker date="1439208702960" expanded="true" signature="1434:1559" placeholder="insert into ..." />
-            <marker date="1439208702960" expanded="true" signature="2188:2313" placeholder="update FundH..." />
-            <marker date="1439208702960" expanded="true" signature="2358:2482" placeholder="update FundH..." />
+            <marker date="1439172260061" expanded="true" signature="1153:1216" placeholder="select * fro..FundHistory..." />
+            <marker date="1439172260061" expanded="true" signature="1434:1559" placeholder="insert into ..." />
+            <marker date="1439172260061" expanded="true" signature="2188:2313" placeholder="update FundH..." />
+            <marker date="1439172260061" expanded="true" signature="2358:2482" placeholder="update FundH..." />
           </folding>
         </state>
       </provider>
@@ -979,10 +996,10 @@
           <caret line="3" column="18" selection-start-line="3" selection-start-column="18" selection-end-line="3" selection-end-column="18" />
           <folding>
             <element signature="e#24#37#0" expanded="true" />
-            <marker date="1439208702960" expanded="true" signature="1153:1216" placeholder="select * fro..FundHistory..." />
-            <marker date="1439208702960" expanded="true" signature="1434:1559" placeholder="insert into ..." />
-            <marker date="1439208702960" expanded="true" signature="2188:2313" placeholder="update FundH..." />
-            <marker date="1439208702960" expanded="true" signature="2358:2482" placeholder="update FundH..." />
+            <marker date="1439172260061" expanded="true" signature="1153:1216" placeholder="select * fro..FundHistory..." />
+            <marker date="1439172260061" expanded="true" signature="1434:1559" placeholder="insert into ..." />
+            <marker date="1439172260061" expanded="true" signature="2188:2313" placeholder="update FundH..." />
+            <marker date="1439172260061" expanded="true" signature="2358:2482" placeholder="update FundH..." />
           </folding>
         </state>
       </provider>
@@ -1020,10 +1037,10 @@
           <caret line="3" column="18" selection-start-line="3" selection-start-column="18" selection-end-line="3" selection-end-column="18" />
           <folding>
             <element signature="e#24#37#0" expanded="true" />
-            <marker date="1439208702960" expanded="true" signature="1153:1216" placeholder="select * fro..FundHistory..." />
-            <marker date="1439208702960" expanded="true" signature="1434:1559" placeholder="insert into ..." />
-            <marker date="1439208702960" expanded="true" signature="2188:2313" placeholder="update FundH..." />
-            <marker date="1439208702960" expanded="true" signature="2358:2482" placeholder="update FundH..." />
+            <marker date="1439172260061" expanded="true" signature="1153:1216" placeholder="select * fro..FundHistory..." />
+            <marker date="1439172260061" expanded="true" signature="1434:1559" placeholder="insert into ..." />
+            <marker date="1439172260061" expanded="true" signature="2188:2313" placeholder="update FundH..." />
+            <marker date="1439172260061" expanded="true" signature="2358:2482" placeholder="update FundH..." />
           </folding>
         </state>
       </provider>
@@ -1061,10 +1078,10 @@
           <caret line="3" column="18" selection-start-line="3" selection-start-column="18" selection-end-line="3" selection-end-column="18" />
           <folding>
             <element signature="e#24#37#0" expanded="true" />
-            <marker date="1439208702960" expanded="true" signature="1153:1216" placeholder="select * fro..FundHistory..." />
-            <marker date="1439208702960" expanded="true" signature="1434:1559" placeholder="insert into ..." />
-            <marker date="1439208702960" expanded="true" signature="2188:2313" placeholder="update FundH..." />
-            <marker date="1439208702960" expanded="true" signature="2358:2482" placeholder="update FundH..." />
+            <marker date="1439172260061" expanded="true" signature="1153:1216" placeholder="select * fro..FundHistory..." />
+            <marker date="1439172260061" expanded="true" signature="1434:1559" placeholder="insert into ..." />
+            <marker date="1439172260061" expanded="true" signature="2188:2313" placeholder="update FundH..." />
+            <marker date="1439172260061" expanded="true" signature="2358:2482" placeholder="update FundH..." />
           </folding>
         </state>
       </provider>
@@ -1147,16 +1164,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/jisilu.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-          <folding>
-            <element signature="e#24#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/SinaApi.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1167,16 +1174,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/FrontPage/js/Fund.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="116" column="0" selection-start-line="116" selection-start-column="0" selection-end-line="116" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/fund.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="42" column="49" selection-start-line="42" selection-start-column="49" selection-end-line="42" selection-end-column="49" />
+          <caret line="48" column="41" selection-start-line="48" selection-start-column="41" selection-end-line="48" selection-end-column="41" />
           <folding>
             <element signature="e#24#37#0" expanded="true" />
-            <marker date="1439208702960" expanded="true" signature="1153:1216" placeholder="select * fro..FundHistory..." />
-            <marker date="1439208702960" expanded="true" signature="1434:1559" placeholder="insert into ..." />
-            <marker date="1439208702960" expanded="true" signature="2188:2313" placeholder="update FundH..." />
-            <marker date="1439208702960" expanded="true" signature="2358:2482" placeholder="update FundH..." />
+            <marker date="1439172260061" expanded="true" signature="1153:1216" placeholder="select * fro..FundHistory..." />
+            <marker date="1439172260061" expanded="true" signature="1434:1559" placeholder="insert into ..." />
+            <marker date="1439172260061" expanded="true" signature="2188:2313" placeholder="update FundH..." />
+            <marker date="1439172260061" expanded="true" signature="2358:2482" placeholder="update FundH..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jisilu.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="43" column="39" selection-start-line="43" selection-start-column="39" selection-end-line="43" selection-end-column="39" />
+          <folding>
+            <element signature="e#24#39#0" expanded="true" />
           </folding>
         </state>
       </provider>
