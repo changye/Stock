@@ -3,6 +3,8 @@
  */
 var fundQuote = undefined;
 var indexQuote = undefined;
+document.indexColumn = {'column': 11, 'reverse': true};
+
 
 
 function getAllFund() {
@@ -95,7 +97,7 @@ function refresh() {
 
         recalc();
 
-        remap();
+        flush();
         //console.log(fundQuote);
     }
     document.head.appendChild(script);
@@ -173,7 +175,7 @@ function recalc() {
         var fundBLowerCalcValue = detail.FUND_LOWER_RECALC * 1.0;
         var fundBId = detail.FUND_B_CODE;
         var netValueA = netValue;
-        console.log(fundBId);
+        //console.log(fundBId);
         var netValueB = getFundDetail(fundBId).FUND_NAV * 1.0;
         var mDec = null;
         if(netValue){
@@ -187,10 +189,7 @@ function recalc() {
 
 }
 
-function remap() {
-    document.fundValues = reIndexBy(document.fundValues,11,false);
-    createTable(document.fundHeader,document.fundValues);
-}
+
 
 function filterOut(funds, key, value) {
     var result = Array();
