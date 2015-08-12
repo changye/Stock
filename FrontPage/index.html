@@ -14,8 +14,9 @@
                 document.allFunds = data;
                 getAllIndex();
                 map();
-                document.focusFunds = filterOut(document.allFunds,'FUND_TYPE',"a");
-//                document.focusFunds = filterOut(document.focusFunds,'FUND_TYPE',"a");
+                document.focusFunds = filterOut(document.allFunds,'FUND_TYPE',"a",'reg');
+                document.focusFunds = filterOut(document.focusFunds,'FUND_MATURITY_DATE','','exact');
+
                 refresh();
             });
         })

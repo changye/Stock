@@ -147,17 +147,25 @@ function recalc() {
         var leftYear = '永续';
         if(detail.FUND_MATURITY_DATE){
             var maturity = detail.FUND_MATURITY_DATE.split('-');
-            leftYear = (((new Date(maturity[0],maturity[1]-1,maturity[2])) - (new Date())) / 31536000000).toFixed(2);
+            leftYear = (((new Date(maturity[0],maturity[1]-1,maturity[2])) - (new Date())) / 31536000000);
             //leftYear = detail.FUND_MATURITY_DATE;
         }
-        fund.push(leftYear);
+        fund.push(leftYear=='永续'?leftYear:leftYear.toFixed(2));
         //修正收益率
         var fundReturn = '-';
+        var nextRecalcDate = detail.FUND_NEXT_RECALC_DATE.split('-');
+        var yearToRecalc = (((new Date(nextRecalcDate[0],nextRecalcDate[1]-1,nextRecalcDate[2])) - (new Date())) / 31536000000);
+        var c0 = detail.FUND_INT / 100;
+        var c1 = detail.FUND_INT_NEXT / 100;
         if(leftYear == '永续' && netValue) {
-            var nextRecalcDate = detail.FUND_NEXT_RECALC_DATE.split('-');
-            var yearToRecalc = (((new Date(nextRecalcDate[0],nextRecalcDate[1]-1,nextRecalcDate[2])) - (new Date())) / 31536000000).toFixed(2);
-            fundReturn = detail.FUND_INT_NEXT / (100 * (price - netValue + 1) + yearToRecalc * (detail.FUND_INT_NEXT - detail.FUND_INT));
+            //fundReturn = detail.FUND_INT_NEXT / (100 * (price - netValue + 1) + yearToRecalc * (detail.FUND_INT_NEXT - detail.FUND_INT));
+            fundReturn = detail.FUND_CODE=='150205'?specialForGuofang(yearToRecalc,price,netValue,c0,0.05):returnForFundA(yearToRecalc,price,netValue,c0,c1);
             fundReturn = (100 * fundReturn).toFixed(3) + '%';
+        }else{
+            if(netValue){
+                fundReturn = specialForFixedYear(yearToRecalc,leftYear,price,netValue,c0,c1);
+                fundReturn = (100 * fundReturn).toFixed(3) + '%';
+            }
         }
         fund.push(fundReturn);
         //参考指数
@@ -191,13 +199,62 @@ function recalc() {
 
 
 
-function filterOut(funds, key, value) {
+function filterOut(funds, key, value, mode) {
     var result = Array();
+
+    if(mode == 'exact') {
+        for(var i in funds) {
+            if(funds[i][key] == value) {
+                result.push(funds[i]);
+            }
+        }
+        return result;
+    }
+
     var pattern = new RegExp(value);
     for(var i in funds) {
         if(pattern.test(funds[i][key]) ) {
-            result.push({'FUND_CODE': funds[i]['FUND_CODE'], 'FUND_MARKET': funds[i]['FUND_MARKET']});
+            result.push(funds[i]);
         }
     }
     return result;
+}
+
+function returnForFundA(t,p,nav,c0,c1) {
+    var r = 0.20;
+    var rc = 0;
+    do {
+        r = (r+rc)/2;
+        rc = (r/p) * ((c0*t+(nav-1))/Math.pow(1+r,t) +  c1/r/Math.pow(1+r,t));
+    }while(Math.abs(r-rc)>0.000001)
+    return r;
+}
+
+function specialForGuofang(t,p,nav,c0,c1) {
+    console.log('guofang');
+    var r = 0.20;
+    var rc = 0;
+    do {
+        r = (r+rc)/2;
+        //rc = r*c0*(2+r)/Math.pow(1+r,t)/(1+r) + c1/(1+r)/Math.pow(1+r,t)
+        rc = (r/p) * ((c0*t+(nav-1))/Math.pow(1+r,t) + c0/Math.pow(1+r,t+1) + c1/r/(1+r)/Math.pow(1+r,t));
+    }while(Math.abs(r-rc)>0.000001)
+    return r;
+}
+
+function specialForFixedYear(t,n,p,nav,c0,c1) {
+    var r = 0.20;
+    var rc = 0;
+    var np = Math.floor(n-t);
+    var lastpay = n-np;
+    do {
+        r = (r+rc)/2;
+        if(np==1){
+            rc = ((c0*t+(nav-1))*r/Math.pow(1+r,t) + (1+c1*(lastpay+1))*r/Math.pow(1+r,n)) / p;
+        }else{
+            rc = ((c0*t+(nav-1))*r/Math.pow(1+r,t) + c1*(1-1/Math.pow(1+r,np))/Math.pow(1+r,t) + (1+c1*lastpay)*r/Math.pow(1+r,n)) / p;
+        }
+    //console.log(rc);
+    }while(Math.abs(r-rc)>0.000001)
+    return r;
 }
