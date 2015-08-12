@@ -10,7 +10,7 @@
     <script src="js/View.js"></script>
     <script>
         $(document).ready(function() {
-            $.getJSON("/Server/fund.php",function (data) {
+            $.getJSON("Server/fund.php",function (data) {
                 document.allFunds = data;
                 getAllIndex();
                 map();
