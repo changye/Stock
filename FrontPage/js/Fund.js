@@ -3,6 +3,24 @@
  */
 var fundQuote = undefined;
 var indexQuote = undefined;
+document.fundHeader = [
+    {'name': '代码', 'type': 'number', 'class': ''},
+    {'name': '名称', 'type': 'text', 'class': ''},
+    {'name': '现价', 'type': 'number', 'class': ''},
+    {'name': '涨幅', 'type': 'price_vol', 'class': 'info'},
+    {'name': '成交额(万元)', 'type': 'number', 'class': ''},
+    {'name': '净值', 'type': 'number', 'class': 'danger'},
+    {'name': '折价率', 'type': 'percent', 'class': ''},
+    {'name': '利率规则', 'type': 'text', 'class': ''},
+    {'name': '本期利率', 'type': 'number', 'class': ''},
+    {'name': '下期利率', 'type': 'number', 'class': ''},
+    {'name': '剩余年限', 'type': 'text', 'class': ''},
+    {'name': '修正收益率', 'type': 'percent', 'class': 'success'},
+    {'name': '参考指数', 'type': 'text', 'class': ''},
+    {'name': '指数涨幅', 'type': 'price_vol', 'class': ''},
+    {'name': '下折母基需跌(静态)', 'type': 'percent', 'class': ''},
+    {'name': '总份额(万份)', 'type': 'number', 'class': ''}
+];
 document.indexColumn = {'column': 11, 'reverse': true};
 
 
@@ -59,6 +77,7 @@ function formatQuote(queryInArray) {
 }
 
 function refresh() {
+    prepare();
     var fundIds = Array();
     if(!document.allFunds) return ;
     for(var i in document.allFunds) {
@@ -104,9 +123,6 @@ function refresh() {
 }
 
 function recalc() {
-    document.fundHeader = ['代码','名称','现价','涨幅','成交额','净值','折价率','利率规则',
-                            '本期利率','下期利率','剩余年限','修正收益率','参考指数','指数涨幅',
-                            '下折母鸡需跌'];
     document.fundValues = Array();
     for(var i in document.focusFunds) {
         var fund = Array();
@@ -159,7 +175,7 @@ function recalc() {
         var c1 = detail.FUND_INT_NEXT / 100;
         if(leftYear == '永续' && netValue) {
             //fundReturn = detail.FUND_INT_NEXT / (100 * (price - netValue + 1) + yearToRecalc * (detail.FUND_INT_NEXT - detail.FUND_INT));
-            fundReturn = detail.FUND_CODE=='150205'?specialForGuofang(yearToRecalc,price,netValue,c0,0.05):returnForFundA(yearToRecalc,price,netValue,c0,c1);
+            fundReturn = detail.FUND_CODE.match(/15020[3|5]/)?specialForPenghua(yearToRecalc,price,netValue,c0,0.05):returnForFundA(yearToRecalc,price,netValue,c0,c1);
             fundReturn = (100 * fundReturn).toFixed(3) + '%';
         }else{
             if(netValue){
@@ -191,10 +207,38 @@ function recalc() {
         }
         mDec = mDec?mDec + '%' : mDec;
         fund.push(mDec);
+        //总份额
+        var vol = (detail.FUND_VOL /10000);
+        fund.push(vol.toFixed(2));
+
 
         document.fundValues.push(fund);
     }
 
+}
+
+function filter() {
+    //选出A类
+    document.focusFunds = filterOut(document.allFunds,'FUND_TYPE',"a",'reg');
+    //选出永续
+    document.focusFunds = filterOut(document.focusFunds,'FUND_MATURITY_DATE','','exact');
+
+    var value = $('#select').val();
+    switch (value) {
+        case 'all':
+            break;
+        case '+3.0%':
+            document.focusFunds = filterOut(document.focusFunds,'FUND_INT_MODE',"\\+3\\.0%",'reg');
+            break;
+        case '+3.5%':
+            document.focusFunds = filterOut(document.focusFunds,'FUND_INT_MODE',"\\+3\\.5%",'reg');
+            break;
+        case '+4.0%':
+            document.focusFunds = filterOut(document.focusFunds,'FUND_INT_MODE',"\\+4\\.0%",'reg');
+            break;
+        default:
+            break;
+    }
 }
 
 
@@ -230,8 +274,8 @@ function returnForFundA(t,p,nav,c0,c1) {
     return r;
 }
 
-function specialForGuofang(t,p,nav,c0,c1) {
-    console.log('guofang');
+function specialForPenghua(t,p,nav,c0,c1) {
+    console.log('penghua')
     var r = 0.20;
     var rc = 0;
     do {

@@ -14,15 +14,55 @@
                 document.allFunds = data;
                 getAllIndex();
                 map();
-                document.focusFunds = filterOut(document.allFunds,'FUND_TYPE',"a",'reg');
-                document.focusFunds = filterOut(document.focusFunds,'FUND_MATURITY_DATE','','exact');
-
+                filter();
                 refresh();
             });
         })
     </script>
 </head>
 <body>
+<div class="container">
+    <div id="message_box">
+        <div class="alert alert-dismissible alert-warning">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            <h4>提示</h4>
 
+            <p>分级基金基本信息来源于<a href="http://www.jisilu.com">集思录</a></p>
+
+            <p>分级基金行情信息来源于<label class="alert-info">新浪行情API</label></p>
+        </div>
+
+        <div class="alert alert-dismissible alert-danger">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            <strong>注意</strong>
+
+            <p>本页面数据仅为测使用，不保证数据的准确！</p>
+        </div>
+    </div>
+    <div id="well">
+        <fieldset>
+            <div class=" col-lg-offset-8 col-lg-3">
+                <div class="form-group">
+                    <div class="col-lg-12">
+                        <select class="form-control btn-info" id="select" onchange="filter();refresh()">
+                            <option value="all">显示全部</option>
+                            <option value="+3.0%">+3.0%</option>
+                            <option value="+3.5%">+3.5%</option>
+                            <option value="+4.0%">+4.0%</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-1">
+                <a href="#" class="btn  col-lg-12 btn-primary" onclick="refresh()">刷 新</a>
+            </div>
+        </fieldset>
+    </div>
+    <br>
+
+    <div id="table_area">
+
+    </div>
+</div>
 </body>
 </html>
