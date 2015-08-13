@@ -146,12 +146,15 @@ function sort(column) {
 }
 
 function prepare(){
-    var tableOld = document.getElementById('fund_table');
-    if(tableOld) tableOld.className += 'bg-primary';
+    $("#refresh").removeClass('btn-primary');
+    $("#refresh").addClass('btn-danger disabled');
 }
 
 function flush() {
     document.fundValues = reIndexBy(document.fundValues,document.indexColumn.column,document.fundHeader[document.indexColumn.column].type,document.indexColumn.reverse);
     createTable();
+    $("#refresh").removeClass('btn-danger');
+    $("#refresh").removeClass('disabled');
+    $("#refresh").addClass('btn-primary');
 }
 
