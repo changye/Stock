@@ -7,21 +7,22 @@ document.fundHeader = [
     {'name': '代码', 'type': 'number', 'class': ''},
     {'name': '名称', 'type': 'text', 'class': ''},
     {'name': '现价', 'type': 'number', 'class': ''},
-    {'name': '涨幅', 'type': 'price_vol', 'class': 'info'},
-    {'name': '成交额(万元)', 'type': 'number', 'class': ''},
+    {'name': '涨幅', 'type': 'price_vol', 'class': 'warning'},
+    {'name': '成交额(万)', 'type': 'number', 'class': ''},
     {'name': '净值', 'type': 'number', 'class': 'danger'},
     {'name': '折价率', 'type': 'percent', 'class': ''},
+    {'name': '净价', 'type': 'number', 'class': 'info'},
     {'name': '利率规则', 'type': 'text', 'class': ''},
-    {'name': '本期利率', 'type': 'number', 'class': ''},
-    {'name': '下期利率', 'type': 'number', 'class': ''},
-    {'name': '剩余年限', 'type': 'text', 'class': ''},
+    {'name': '本期', 'type': 'number', 'class': ''},
+    {'name': '下期', 'type': 'number', 'class': ''},
+    {'name': '定折日期', 'type': 'text', 'class': ''},
     {'name': '修正收益率', 'type': 'percent', 'class': 'success'},
     {'name': '参考指数', 'type': 'text', 'class': ''},
     {'name': '指数涨幅', 'type': 'price_vol', 'class': ''},
-    {'name': '下折母基需跌(静态)', 'type': 'percent', 'class': ''},
-    {'name': '总份额(万份)', 'type': 'number', 'class': ''}
+    {'name': '下折需跌(静)', 'type': 'percent', 'class': ''},
+    {'name': '总份额(万)', 'type': 'number', 'class': ''}
 ];
-document.indexColumn = {'column': 11, 'reverse': true};
+document.indexColumn = {'column': 12, 'reverse': true};
 
 
 
@@ -153,20 +154,28 @@ function recalc() {
             discount = ((1 - (fundQuote[id].quote / detail.FUND_NAV)) * 100).toFixed(2) + '%'
         }
         fund.push(discount);
+        //净价
+        var netPrice = 0;
+        if(netValue){
+            netPrice = price - (netValue - 1);
+        }
+        fund.push(netPrice > 0?netPrice.toFixed(3):null);
         //利率规则
         fund.push(detail.FUND_INT_MODE);
         //本期利率
         fund.push(detail.FUND_INT);
         //下期利率
         fund.push(detail.FUND_INT_NEXT);
-        //剩余年限
+        //剩余年限（计算但不显示）
         var leftYear = '永续';
         if(detail.FUND_MATURITY_DATE){
             var maturity = detail.FUND_MATURITY_DATE.split('-');
             leftYear = (((new Date(maturity[0],maturity[1]-1,maturity[2])) - (new Date())) / 31536000000);
-            //leftYear = detail.FUND_MATURITY_DATE;
         }
-        fund.push(leftYear=='永续'?leftYear:leftYear.toFixed(2));
+        //fund.push(leftYear=='永续'?leftYear:leftYear.toFixed(2));
+        //定折日期
+        var nextCalcDate;
+        fund.push(detail.FUND_NEXT_RECALC_DATE);
         //修正收益率
         var fundReturn = '-';
         var nextRecalcDate = detail.FUND_NEXT_RECALC_DATE.split('-');
