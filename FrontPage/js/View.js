@@ -192,9 +192,10 @@ function markChanges() {
 
     for(var i in rankingChange) {
         if(rankingChange[i] > 0){
-            $("#"+i).addClass('success');
-        }else{
-            $("#"+i).addClass('danger');
+            $("#"+i).animate({opacity:'0.2'},"fast");
+            $("#"+i).animate({opacity:'1'},"fast");
+            $("#"+i).animate({opacity:'0.2'},"fast");
+            $("#"+i).animate({opacity:'1'},"fast");
         }
     }
 
