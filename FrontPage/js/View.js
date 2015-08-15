@@ -160,10 +160,7 @@ function flush() {
     document.lastFlush = document.fundValues;
     document.lastIndexColumn = document.indexColumn;
 
-
-    $("#refresh").removeClass('btn-danger');
-    $("#refresh").removeClass('disabled');
-    $("#refresh").addClass('btn-primary');
+    $("#refresh").attr('class','btn btn-primary');
     document.lock = false;
 }
 
