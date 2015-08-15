@@ -49,6 +49,7 @@ function createBody() {
 
 function createRow(value) {
     var row = document.createElement('tr');
+    row.setAttribute('id',value[0]);
     for(var i in value) {
         var col = document.createElement('td');
         col.setAttribute('class',document.fundHeader[i].class);
@@ -146,6 +147,7 @@ function sort(column) {
 }
 
 function prepare(){
+    document.lock = true;
     $("#refresh").removeClass('btn-primary');
     $("#refresh").addClass('btn-danger disabled');
 }
@@ -153,8 +155,49 @@ function prepare(){
 function flush() {
     document.fundValues = reIndexBy(document.fundValues,document.indexColumn.column,document.fundHeader[document.indexColumn.column].type,document.indexColumn.reverse);
     createTable();
+
+    markChanges();
+    document.lastFlush = document.fundValues;
+    document.lastIndexColumn = document.indexColumn;
+
+
     $("#refresh").removeClass('btn-danger');
     $("#refresh").removeClass('disabled');
     $("#refresh").addClass('btn-primary');
+    document.lock = false;
 }
 
+function markChanges() {
+    // 如果上一次数据不存在
+    if(!document.lastFlush || !document.lastIndexColumn) {
+        return;
+    }
+
+    // 如果上一次的排序列和这次的不同
+    if(document.lastIndexColumn.column != document.indexColumn.column || document.lastIndexColumn.reverse != document.indexColumn.reverse) {
+        return;
+    }
+    var rankingChange = Object();
+    var oldRanking = Object();
+    for(var i in document.lastFlush){
+        var code = document.lastFlush[i][0];
+        oldRanking[code] = i;
+    }
+    for(var i in document.fundValues){
+        var code = document.fundValues[i][0];
+        if(oldRanking[code] != undefined && oldRanking[code] != i){
+            rankingChange[code] = oldRanking[code] - i;
+        }
+    }
+
+    for(var i in rankingChange) {
+        if(rankingChange[i] > 0){
+            $("#"+i).addClass('success');
+        }else{
+            $("#"+i).addClass('danger');
+        }
+    }
+
+
+
+}

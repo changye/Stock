@@ -1,6 +1,8 @@
 /**
  * Created by changye on 15-8-10.
  */
+
+/* 全局变量初始化 */
 var fundQuote = undefined;
 var indexQuote = undefined;
 document.fundHeader = [
@@ -23,8 +25,9 @@ document.fundHeader = [
     {'name': '总份额(万)', 'type': 'number', 'class': ''}
 ];
 document.indexColumn = {'column': 12, 'reverse': true};
-
-
+document.lastFlush = null;
+document.lastIndexColumn = null;
+/* 初始化结束 */
 
 function getAllFund() {
     $.getJSON("/Server/fund.php", function (data) {

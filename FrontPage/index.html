@@ -10,14 +10,33 @@
     <script src="js/View.js"></script>
     <script>
         $(document).ready(function() {
-            $.getJSON("../Server/fund.php",function (data) {
+            $.getJSON("../Server/fund.php", function (data) {
                 document.allFunds = data;
                 getAllIndex();
                 map();
                 filter();
                 refresh();
             });
-        })
+            document.auto_refresh = true;
+            $("#auto-refresh").click(function () {
+                if (document.auto_refresh) {
+                    document.auto_refresh = false;
+                    $(this).html('打开自动刷新');
+                } else {
+                    document.auto_refresh = true;
+                    $(this).html('关闭自动刷新');
+                }
+            });
+
+            setInterval(function () {
+                if (document.auto_refresh && !document.lock) {
+                    filter();
+                    refresh();
+                    console.log('auto refresh');
+                }
+
+            }, 2000);
+        });
     </script>
 </head>
 <body>
@@ -43,7 +62,7 @@
     </div>
     <div id="well">
         <fieldset>
-            <div class=" col-lg-offset-8 col-lg-3">
+            <div class=" col-lg-3">
                 <div class="form-group">
                     <div class="col-lg-12">
                         <select class="form-control btn-info" id="select" onchange="filter();refresh()">
@@ -55,8 +74,13 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-1">
-                <a href="#" class="btn  col-lg-12 btn-primary" id="refresh" onclick="refresh()">刷 新</a>
+
+            <div class="col-lg-offset-7 col-lg-2 btn-group">
+                <a href="#" class="btn  btn-primary" id="refresh" onclick="refresh()">手动刷新</a>
+                <a href="#" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="caret"></span></a>
+                <ul class="dropdown-menu" >
+                    <li><a href="#" id="auto-refresh">关闭自动刷新</a></li>
+                </ul>
             </div>
         </fieldset>
     </div>
