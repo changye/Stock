@@ -30,9 +30,10 @@ if($fundType != ''){
 }
 //echo $queryCmd;
 $result = $db->query($queryCmd);
-if($result) {
-    $items = array();
 
+$items = array();
+
+if($result) {
     while($item = $result->fetch_assoc())
     {
         foreach($item as $key=>$value){
@@ -42,10 +43,31 @@ if($result) {
         }
         $items[] = $item;
     }
-    $json = urldecode(json_encode($items));
-    echo $json;
-
 }
+
+//获得上一交易日的份额数据
+$queryCmd = "select FUND_CODE,FUND_VOL from FundHistory where FUND_DATE=(select distinct FUND_DATE from FundHistory order by FUND_DATE desc limit 1,1)";
+$result = $db->query($queryCmd);
+$vols = array();
+if($result){
+    while($vol = $result->fetch_assoc())
+    {
+        $vols[$vol['FUND_CODE']] = $vol['FUND_VOL'];
+    }
+}
+
+//两份数据合并
+$funds = array();
+foreach ($items as $fund) {
+    if (isset($vols[$fund['FUND_CODE']])) {
+        $fund['FUND_VOL_LAST'] = $vols[$fund['FUND_CODE']];
+    }
+    $funds[] = $fund;
+}
+
+
+$json = urldecode(json_encode($funds));
+echo $json;
 
 $db->close();
 

@@ -25,13 +25,17 @@
       <file leaf-file-name="fund.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/fund.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.2633297">
-              <caret line="19" column="51" selection-start-line="19" selection-start-column="51" selection-end-line="19" selection-end-column="51" />
+            <state vertical-scroll-proportion="0.26067907">
+              <caret line="59" column="17" selection-start-line="59" selection-start-column="17" selection-end-line="59" selection-end-column="17" />
               <folding>
-                <marker date="1439216746692" expanded="true" signature="595:810" placeholder="select FundD..FundDetail..." />
-                <marker date="1439216746692" expanded="true" signature="733:771" placeholder="select max(F..FundHistory..." />
-                <marker date="1439216746692" expanded="true" signature="837:1014" placeholder="select FundD..FundDetail..." />
-                <marker date="1439216746692" expanded="true" signature="975:1013" placeholder="select max(F..FundHistory..." />
+                <marker date="1439787716850" expanded="true" signature="595:810" placeholder="select FundD..FundDetail..." />
+                <marker date="1439787716850" expanded="true" signature="733:771" placeholder="select max(F..FundHistory..." />
+                <marker date="1439787716850" expanded="true" signature="837:1014" placeholder="select FundD..FundDetail..." />
+                <marker date="1439787716850" expanded="true" signature="975:1013" placeholder="select max(F..FundHistory..." />
+                <marker date="1439787716850" expanded="true" signature="1420:1468" placeholder="select FUND_..FundHistory..." />
+                <marker date="1439787716850" expanded="true" signature="1420:1557" placeholder="select FUND_..FundHistory..." />
+                <marker date="1439787716850" expanded="true" signature="1420:1961" placeholder="select FUND_..FundHistory..." />
+                <marker date="1439787716850" expanded="true" signature="1480:1522" placeholder="select disti..FundHistory..." />
               </folding>
             </state>
           </provider>
@@ -59,9 +63,9 @@
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
     <option name="x" value="65" />
-    <option name="y" value="-4" />
+    <option name="y" value="24" />
     <option name="width" value="1855" />
-    <option name="height" value="1084" />
+    <option name="height" value="1056" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -86,6 +90,8 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -106,8 +112,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -173,7 +177,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="65" y="-4" width="1855" height="1084" extended-state="6" />
+    <frame x="65" y="24" width="1855" height="1056" extended-state="6" />
     <editor active="false" />
     <layout>
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -217,10 +221,14 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1439216746692" expanded="true" signature="595:810" placeholder="select FundD..FundDetail..." />
-            <marker date="1439216746692" expanded="true" signature="733:771" placeholder="select max(F..FundHistory..." />
-            <marker date="1439216746692" expanded="true" signature="837:1014" placeholder="select FundD..FundDetail..." />
-            <marker date="1439216746692" expanded="true" signature="975:1013" placeholder="select max(F..FundHistory..." />
+            <marker date="1439787716850" expanded="true" signature="595:810" placeholder="select FundD..FundDetail..." />
+            <marker date="1439787716850" expanded="true" signature="733:771" placeholder="select max(F..FundHistory..." />
+            <marker date="1439787716850" expanded="true" signature="837:1014" placeholder="select FundD..FundDetail..." />
+            <marker date="1439787716850" expanded="true" signature="975:1013" placeholder="select max(F..FundHistory..." />
+            <marker date="1439787716850" expanded="true" signature="1420:1468" placeholder="select FUND_..FundHistory..." />
+            <marker date="1439787716850" expanded="true" signature="1420:1557" placeholder="select FUND_..FundHistory..." />
+            <marker date="1439787716850" expanded="true" signature="1420:1961" placeholder="select FUND_..FundHistory..." />
+            <marker date="1439787716850" expanded="true" signature="1480:1522" placeholder="select disti..FundHistory..." />
           </folding>
         </state>
       </provider>
@@ -230,10 +238,14 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1439216746692" expanded="true" signature="595:810" placeholder="select FundD..FundDetail..." />
-            <marker date="1439216746692" expanded="true" signature="733:771" placeholder="select max(F..FundHistory..." />
-            <marker date="1439216746692" expanded="true" signature="837:1014" placeholder="select FundD..FundDetail..." />
-            <marker date="1439216746692" expanded="true" signature="975:1013" placeholder="select max(F..FundHistory..." />
+            <marker date="1439787716850" expanded="true" signature="595:810" placeholder="select FundD..FundDetail..." />
+            <marker date="1439787716850" expanded="true" signature="733:771" placeholder="select max(F..FundHistory..." />
+            <marker date="1439787716850" expanded="true" signature="837:1014" placeholder="select FundD..FundDetail..." />
+            <marker date="1439787716850" expanded="true" signature="975:1013" placeholder="select max(F..FundHistory..." />
+            <marker date="1439787716850" expanded="true" signature="1420:1468" placeholder="select FUND_..FundHistory..." />
+            <marker date="1439787716850" expanded="true" signature="1420:1557" placeholder="select FUND_..FundHistory..." />
+            <marker date="1439787716850" expanded="true" signature="1420:1961" placeholder="select FUND_..FundHistory..." />
+            <marker date="1439787716850" expanded="true" signature="1480:1522" placeholder="select disti..FundHistory..." />
           </folding>
         </state>
       </provider>
@@ -243,23 +255,48 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1439216746692" expanded="true" signature="595:810" placeholder="select FundD..FundDetail..." />
-            <marker date="1439216746692" expanded="true" signature="733:771" placeholder="select max(F..FundHistory..." />
-            <marker date="1439216746692" expanded="true" signature="837:1014" placeholder="select FundD..FundDetail..." />
-            <marker date="1439216746692" expanded="true" signature="975:1013" placeholder="select max(F..FundHistory..." />
+            <marker date="1439787716850" expanded="true" signature="595:810" placeholder="select FundD..FundDetail..." />
+            <marker date="1439787716850" expanded="true" signature="733:771" placeholder="select max(F..FundHistory..." />
+            <marker date="1439787716850" expanded="true" signature="837:1014" placeholder="select FundD..FundDetail..." />
+            <marker date="1439787716850" expanded="true" signature="975:1013" placeholder="select max(F..FundHistory..." />
+            <marker date="1439787716850" expanded="true" signature="1420:1468" placeholder="select FUND_..FundHistory..." />
+            <marker date="1439787716850" expanded="true" signature="1420:1557" placeholder="select FUND_..FundHistory..." />
+            <marker date="1439787716850" expanded="true" signature="1420:1961" placeholder="select FUND_..FundHistory..." />
+            <marker date="1439787716850" expanded="true" signature="1480:1522" placeholder="select disti..FundHistory..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/fund.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.2633297">
-          <caret line="19" column="51" selection-start-line="19" selection-start-column="51" selection-end-line="19" selection-end-column="51" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1439216746692" expanded="true" signature="595:810" placeholder="select FundD..FundDetail..." />
-            <marker date="1439216746692" expanded="true" signature="733:771" placeholder="select max(F..FundHistory..." />
-            <marker date="1439216746692" expanded="true" signature="837:1014" placeholder="select FundD..FundDetail..." />
-            <marker date="1439216746692" expanded="true" signature="975:1013" placeholder="select max(F..FundHistory..." />
+            <marker date="1439787716850" expanded="true" signature="595:810" placeholder="select FundD..FundDetail..." />
+            <marker date="1439787716850" expanded="true" signature="733:771" placeholder="select max(F..FundHistory..." />
+            <marker date="1439787716850" expanded="true" signature="837:1014" placeholder="select FundD..FundDetail..." />
+            <marker date="1439787716850" expanded="true" signature="975:1013" placeholder="select max(F..FundHistory..." />
+            <marker date="1439787716850" expanded="true" signature="1420:1468" placeholder="select FUND_..FundHistory..." />
+            <marker date="1439787716850" expanded="true" signature="1420:1557" placeholder="select FUND_..FundHistory..." />
+            <marker date="1439787716850" expanded="true" signature="1420:1961" placeholder="select FUND_..FundHistory..." />
+            <marker date="1439787716850" expanded="true" signature="1480:1522" placeholder="select disti..FundHistory..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fund.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.26067907">
+          <caret line="59" column="17" selection-start-line="59" selection-start-column="17" selection-end-line="59" selection-end-column="17" />
+          <folding>
+            <marker date="1439787716850" expanded="true" signature="595:810" placeholder="select FundD..FundDetail..." />
+            <marker date="1439787716850" expanded="true" signature="733:771" placeholder="select max(F..FundHistory..." />
+            <marker date="1439787716850" expanded="true" signature="837:1014" placeholder="select FundD..FundDetail..." />
+            <marker date="1439787716850" expanded="true" signature="975:1013" placeholder="select max(F..FundHistory..." />
+            <marker date="1439787716850" expanded="true" signature="1420:1468" placeholder="select FUND_..FundHistory..." />
+            <marker date="1439787716850" expanded="true" signature="1420:1557" placeholder="select FUND_..FundHistory..." />
+            <marker date="1439787716850" expanded="true" signature="1420:1961" placeholder="select FUND_..FundHistory..." />
+            <marker date="1439787716850" expanded="true" signature="1480:1522" placeholder="select disti..FundHistory..." />
           </folding>
         </state>
       </provider>

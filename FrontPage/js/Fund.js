@@ -10,19 +10,21 @@ document.fundHeader = [
     {'name': '名称', 'type': 'text', 'class': ''},
     {'name': '现价', 'type': 'number', 'class': ''},
     {'name': '涨幅', 'type': 'price_vol', 'class': 'warning'},
-    {'name': '成交额(万)', 'type': 'number', 'class': ''},
+    {'name': '成交(万)', 'type': 'number', 'class': ''},
     {'name': '净值', 'type': 'number', 'class': 'danger'},
     {'name': '折价率', 'type': 'percent', 'class': ''},
     {'name': '净价', 'type': 'number', 'class': 'info'},
-    {'name': '利率规则', 'type': 'text', 'class': ''},
+    {'name': '规则', 'type': 'text', 'class': ''},
     {'name': '本期', 'type': 'number', 'class': ''},
     {'name': '下期', 'type': 'number', 'class': ''},
     {'name': '定折日期', 'type': 'text', 'class': ''},
-    {'name': '修正收益率', 'type': 'percent', 'class': 'success'},
+    {'name': '收益率', 'type': 'percent', 'class': 'success'},
     {'name': '参考指数', 'type': 'text', 'class': ''},
     {'name': '指数涨幅', 'type': 'price_vol', 'class': ''},
-    {'name': '下折需跌(静)', 'type': 'percent', 'class': ''},
-    {'name': '总份额(万)', 'type': 'number', 'class': ''}
+    {'name': '下折需跌', 'type': 'percent', 'class': ''},
+    {'name': '份额(万)', 'type': 'number', 'class': ''},
+    {'name': '变化(万)', 'type': 'number', 'class': ''},
+    {'name': '溢价(估)', 'type': 'percent', 'class': ''}
 ];
 document.indexColumn = {'column': 12, 'reverse': true};
 document.lastFlush = null;
@@ -203,26 +205,40 @@ function recalc() {
         var indexVolatility = null;
         var indexId = completeIndexId(detail.FUND_INDEX_CODE);
         if(indexQuote[indexId]) {
-            indexVolatility = (((indexQuote[indexId].quote / indexQuote[indexId].close_yesterday) - 1) * 100).toFixed(2);
-            indexVolatility = indexVolatility + '%';
+            indexVolatility = (((indexQuote[indexId].quote / indexQuote[indexId].close_yesterday) - 1) * 100);
         }
-        fund.push(indexVolatility);
+        fund.push(indexVolatility?indexVolatility.toFixed(2) + '%':'NaN%');
         //下折母鸡需跌
         var fundBLowerCalcValue = detail.FUND_LOWER_RECALC * 1.0;
         var fundBId = detail.FUND_B_CODE;
         var netValueA = netValue;
         //console.log(fundBId);
         var netValueB = getFundDetail(fundBId).FUND_NAV * 1.0;
+        var ratioA = detail.FUND_A_RATIO * 1;
+        var ratioB = detail.FUND_B_RATIO * 1;
+        var netValueM = (ratioA * netValueA + ratioB * netValueB) / (ratioA + ratioB);
+        var lowerRecalcValue = (ratioA * netValueA + ratioB * fundBLowerCalcValue) / (ratioA + ratioB);
         var mDec = null;
-        if(netValue){
-            mDec = ((1 - (fundBLowerCalcValue + netValue) / (netValueA + netValueB)) * 100).toFixed(2) ;
+        if(netValueA && netValueB){
+            mDec = ((1 - lowerRecalcValue / netValueM) * 100) ;
         }
-        mDec = mDec?mDec + '%' : mDec;
+        mDec = mDec?mDec.toFixed(2) + '%':null;
         fund.push(mDec);
         //总份额
         var vol = (detail.FUND_VOL /10000);
-        fund.push(vol.toFixed(2));
+        fund.push(vol.toFixed(0));
+        //份额变化
+        var volChange = vol - detail.FUND_VOL_LAST / 10000;
+        fund.push(volChange.toFixed(0));
+        //溢价率, 假设仓位为90%
+        var premium = null;
+        if(netValueA && netValueB) {
+            var priceB = fundQuote[detail.FUND_MARKET+detail.FUND_B_CODE].quote * 1.0;
+            var priceM = (ratioA * price + ratioB * priceB) / (ratioA + ratioB);
+            premium = (priceM / (netValueM * (1 + indexVolatility*0.9/100)) - 1) * 100;
+        }
 
+        fund.push(premium?premium.toFixed(2) + '%':null);
 
         document.fundValues.push(fund);
     }
@@ -287,7 +303,7 @@ function returnForFundA(t,p,nav,c0,c1) {
 }
 
 function specialForPenghua(t,p,nav,c0,c1) {
-    console.log('penghua')
+    //console.log('penghua');
     var r = 0.20;
     var rc = 0;
     do {
