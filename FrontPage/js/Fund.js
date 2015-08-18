@@ -136,11 +136,11 @@ function recalc() {
         var detail = getFundDetail(document.focusFunds[i].FUND_CODE);
         //代码
         var code = document.focusFunds[i].FUND_CODE;
-        var link = "http://www.jisilu.cn/data/sfnew/detail/" + code;
-        var codeLink = "<a href=\"" + link + "\" target=\"_blank\">" + code + "</a>";
-        fund.push(codeLink);
+        fund.push(code);
         //名称
-        fund.push(detail.FUND_ABBR);
+        var link = "http://www.jisilu.cn/data/sfnew/detail/" + code;
+        var fundAbbr = "<a href=\"" + link + "\" target=\"_blank\">" + detail.FUND_ABBR + "</a>";
+        fund.push(fundAbbr);
         //现价
         var price = fundQuote[id].quote * 1.0;
         fund.push(price.toFixed(3));
