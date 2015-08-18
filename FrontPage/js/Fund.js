@@ -135,7 +135,10 @@ function recalc() {
         var id = document.focusFunds[i].FUND_MARKET + document.focusFunds[i].FUND_CODE;
         var detail = getFundDetail(document.focusFunds[i].FUND_CODE);
         //代码
-        fund.push(document.focusFunds[i].FUND_CODE);
+        var code = document.focusFunds[i].FUND_CODE;
+        var link = "http://www.jisilu.cn/data/sfnew/detail/" + code;
+        var codeLink = "<a href=\"" + link + "\" target=\"_blank\">" + code + "</a>";
+        fund.push(codeLink);
         //名称
         fund.push(detail.FUND_ABBR);
         //现价
