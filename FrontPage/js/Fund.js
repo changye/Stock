@@ -192,7 +192,7 @@ function recalc() {
         var c1 = detail.FUND_INT_NEXT / 100;
         if(leftYear == '永续' && netValue) {
             //fundReturn = detail.FUND_INT_NEXT / (100 * (price - netValue + 1) + yearToRecalc * (detail.FUND_INT_NEXT - detail.FUND_INT));
-            fundReturn = detail.FUND_CODE.match(/15020[3|5]/)?specialForPenghua(yearToRecalc,price,netValue,c0,0.05):returnForFundA(yearToRecalc,price,netValue,c0,c1);
+            fundReturn = detail.FUND_CODE.match(/15020[3|5]/)?specialForPenghua(yearToRecalc,price,netValue,c0,0.0475):returnForFundA(yearToRecalc,price,netValue,c0,c1);
             fundReturn = (100 * fundReturn).toFixed(3) + '%';
         }else{
             if(netValue){
